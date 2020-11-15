@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<style>
+
+
+.nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #555;
+}
+
+.nav li {
+  float: left;
+}
+
+.nav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.nav li a:hover {
+  background-color: #000;
+}
+
+.form_block {
+  display: block;
+  color: black;
+  text-align: left;
+  padding: 14px 16px;
+  border-radius: 16px;
+  margin-right: 20px;
+  padding: 27px 30px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 2px 0 rgba(0,56,101,.12);
+  margin: 20px 0;
+  animation: collapse .5s ease;
+  display: -webkit-flex;
+  width: 612px;
+  margin: 0 auto;
+  transition: .4s ease;
+}
+.input_styled {
+  border: none;
+  font-size: 13px;
+  font-family: Roboto,sans-serif;
+  font-weight: 200;
+  transition: .4s ease;
+  -webkit-transform-origin: left center;
+  transform-origin: left center;
+  border-radius: 0;
+  padding: 1px;
+}
+
+
+</style>
+</head>
+<body>
+
+<div id="header">
+  <div id="logo">
+  </div>
+</div>
+<div id="nav" class="nav">
+  <ul>
+    <li>
+      {% if current_user.is_anonymous %}
+        <a href="{{url_for('login')}}">Login</a>
+        <a href="{{url_for('register')}}">Register</a>
+      {% else %}
+        <a href="{{url_for('logout')}}">Logout</a>
+    {% endif %}
+  </ul>
+</div>
+ <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+    {% block content %}{% endblock %}
+</body>
+</html>

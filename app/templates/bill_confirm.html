@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Bill</h1>
+  <h2>укажите валюту списания</h2>
+<div class=form_block>
+  <form name="bill" method="get">
+     <div class="input_styled">
+        <div style="float: left; display: inline-block; line-height: 25px;">
+          {{form.shop_amount.label }} <br>
+          {{form.shop_currency.label}} <br>
+          {{form.payer_currency.label}}<br>
+          {{form.shop_id.label}} <br>
+          {{form.shop_order_id.label}}
+        </div>
+      <div style="float: right; display: inline-block; line-height: 25px;">
+          {{form.shop_amount(class = "input_styled")}}
+               {% for error in form.shop_amount.errors %}
+                  <span style="color: red;">[{{ error }}]</span>
+                {% endfor %} <br>
+
+          {{form.shop_currency(class="input_styled")}}<br>
+          {{form.payer_currency}}<br>
+          {{form.shop_id(class="input_styled")}}<br>
+          {{form.shop_order_id(class="input_styled")}}<br>
+
+
+      </div>
+    </div>
+<!--  -->
+        <p>{{ form.submit() }}</p>
+      </form>
+
+
+  
+{% endblock %}

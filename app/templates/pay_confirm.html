@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Pay</h1>
+  <div class=form_block>
+  <form  name="Pay" action="https://pay.piastrix.com/ru/pay" method="post"  >
+  <div class="input_styled">
+    <div style="float: left; display: inline-block; line-height: 25px;">
+      {{form.amount.label }} <br>
+      {{form.currency.label}} <br>
+      {{form.shop_id.label}} <br>
+      {{form.shop_order_id.label}}
+    </div>
+    <div style="float: right; display: inline-block; line-height: 27px;">
+      {{form.amount(class = "input_styled")}}
+           {% for error in form.amount.errors %}
+              <span style="color: red;">[{{ error }}]</span>
+            {% endfor %} <br>
+      {{form.currency(class="input_styled")}}
+      </div>
+      <p>{{form.shop_id(class = "input_styled")}}<br>
+       {{form.shop_order_id(class = "input_styled")}}</p><br>
+        <p><b>{{form.submit()}}</b></p>
+       {{form.csrf_token(value="{{form.sign}}")}}
+    
+      </form>
+    </div>
+  </div>
+  
+{% endblock %}

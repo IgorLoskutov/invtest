@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Payment</h1>
+  <h2>Invoice</h2>
+
+  <form action="{{form.url}}" method="{{form.method}}" >
+    
+
+
+    <input type="submit">
+    <p>{% for key in form.data%}
+    {{key}}<input name="{{key}}" value="{{form.data[key]}}" size="{{form.data[key]|length()}}"><br>
+    {% endfor %}</p>
+  </form>
+{% endblock %}

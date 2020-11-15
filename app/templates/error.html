@@ -1,0 +1,9 @@
+{% extends "payment.html" %}
+
+{% block content %}
+  <h1>ERROR </h1>
+    
+    <h2>code: {{data.error_code}}</h2>
+    <p>{{data.message}}</p>
+  
+{% endblock %}

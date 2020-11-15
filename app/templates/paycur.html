@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Payment</h1>
+
+  <form name="bill" method="get">
+    
+    <p>
+        {{form.shop_amount.label }}  <br>
+        {{form.shop_amount }}
+         {% for error in form.shop_amount.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}
+        {{form.shop_currency}}
+        {% for error in form.shop_currency.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}
+        {{form.payer_currency}}
+        {% for error in form.payer_currency.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}
+        {{form.shop_id}}
+        {{form.shop_order_id}}
+
+        {{form.sign}}
+
+      </p>
+        <p>{{ form.submit() }}</p>
+      </form>
+
+
+  
+{% endblock %}
