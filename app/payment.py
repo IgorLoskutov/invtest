@@ -60,8 +60,7 @@ class Payment():
 		form.sign.data = self.data['sign']
 		form.shop_order_id.data  = self.data['shop_order_id']
 		form.shop_id.data = int(self.data['shop_id'])
-
-		self.res.update({'data': form, 'url': 'https://pay.piastrix.com/en/pay'})
+		self.res.update({'data': form})
 		return self.res
 
 
